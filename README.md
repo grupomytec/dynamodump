@@ -149,3 +149,12 @@ python dynamodump.py -m backup -r local -s testTable --host localhost --port 800
 python dynamodump.py -m restore -r local -s testTable --host localhost --port 8000 --accessKey a --secretKey a
 ```
 Multiple table backup/restore as stated in the AWS examples are also available for local.
+
+## Run with Docker
+
+```bash
+docker build -t dynamodump:latest .
+docker run -it -v `pwd`:/dump dynamodump:latest sh
+dynamodump --accessKey KEY --secretKey SECRET -r us-east-1 -m backup -s table
+dynamodump --accessKey KEY --secretKey SECRET -r us-east-1 -m restore -s table
+```
